@@ -37,3 +37,8 @@ Route::get('/contact', function(){
 Route::get('/post', function(){
     return view('website.post');
 });
+
+// admin panel routes
+Route::get('/admin-panel', function(){
+    return view('admin.dashboard.index');
+});
