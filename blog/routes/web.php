@@ -39,6 +39,8 @@ Route::get('/post', function(){
 });
 
 // admin panel routes
-Route::get('/admin-panel', function(){
-    return view('admin.dashboard.index');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('/admin-panel', function(){
+        return view('admin.dashboard.index');
+    });
 });
