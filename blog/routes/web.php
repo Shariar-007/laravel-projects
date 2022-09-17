@@ -49,5 +49,7 @@ Route::group(['prefix' => 'admin'], function () {
     });
     
     Route::resource('/category', 'CategoryController');
+
+    Route::resource('/tag', 'TagController');
 });
 

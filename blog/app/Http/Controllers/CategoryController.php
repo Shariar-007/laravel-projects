@@ -111,8 +111,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        // dd($category);
-        // return;
         if($category) {
             $category->delete();
             Session::flash('success', 'category deleted successfully');
