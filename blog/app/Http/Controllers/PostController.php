@@ -45,6 +45,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+        // return;
         $this->validate($request, [
             'title' => 'required|unique:posts,title',
             'image' => 'required|image',
@@ -62,7 +64,7 @@ class PostController extends Controller
             'published_at' => Carbon::now(),
         ]);
 
-        // $post->tags()->attach($request->tags);
+        $post->tags()->attach($request->tags);
 
         if($request->hasFile('image')){
             $image = $request->image;
@@ -84,7 +86,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('admin.post.show', compact('post'));
     }
 
     /**
@@ -120,7 +122,7 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->category_id = $request->category;
 
-        // $post->tags()->sync($request->tags);
+        $post->tags()->sync($request->tags);
 
         if($request->hasFile('image')){
             $image = $request->image;

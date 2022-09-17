@@ -79,18 +79,20 @@
                                             </div>
                                         </div>
 
-                                        {{-- <div class="form-group">
+                                        <div class="form-group">
                                         <label>Choose Post Tags</label>
                                         <div class=" d-flex flex-wrap">
                                             @foreach ($tags as $tag) 
                                             <div class="custom-control custom-checkbox" style="margin-right: 20px">
-                                                <input class="custom-control-input" name="tags[]" type="checkbox" id="tag{{ $tag->id}}" 
-                                                value="{{ $tag->id }}" @if ($post->tag_id == $tag->id) selected @endif>
+                                                <input class="custom-control-input" name="tags[]" type="checkbox" id="tag{{ $tag->id}}" value="{{ $tag->id }}" 
+                                                    @foreach($post->tags as $t)
+                                                        @if($tag->id == $t->id) checked @endif
+                                                    @endforeach>
                                                 <label for="tag{{ $tag->id}}" class="custom-control-label">{{ $tag->name }}</label>
                                             </div>
                                             @endforeach
                                         </div>
-                                    </div> --}}
+                                    </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Description</label>
