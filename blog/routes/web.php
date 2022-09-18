@@ -43,7 +43,7 @@ Route::get('/post', function(){
 // });
 
 // admin panel routes 'middleware' => ['auth']
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', function(){
       return view('admin.dashboard.index');
     });
