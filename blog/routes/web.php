@@ -21,22 +21,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function(){
-    return view('website.home');
-})->name('website');
-
-Route::get('/about', function(){
-    return view('website.about');
-});
-Route::get('/category', function(){
-    return view('website.category');
-});
-Route::get('/contact', function(){
-    return view('website.contact');
-});
-Route::get('/post', function(){
-    return view('website.post');
-});
+// frontend routing
+Route::get('/', 'FrontendController@home')->name('website');
+Route::get('/about', 'FrontendController@about')->name('website.about');
+Route::get('/category', 'FrontendController@category')->name('website.category');
+Route::get('/contact', 'FrontendController@contact')->name('website.contact');
+Route::get('/post/{slug}', 'FrontendController@post')->name('website.post');
 
 // Route::get('/admin-panel', function(){
 //     return view('admin.dashboard.index');

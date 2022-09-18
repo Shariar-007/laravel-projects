@@ -11,7 +11,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('website') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('tag.index') }}">Post List</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Post List</a></li>
                         <li class="breadcrumb-item active">Edit Post</li>
                     </ol>
                 </div><!-- /.col -->
@@ -100,7 +100,7 @@
                                         </div>
 
                                         <div class="card-footer px-0">
-                                            <button type="submit" class="btn btn-primary">Update Tag</button>
+                                            <button type="submit" class="btn btn-primary">Update Post</button>
                                         </div>
                                 </div>
                                 </form>
