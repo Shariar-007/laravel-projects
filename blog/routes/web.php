@@ -46,3 +46,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('/profile', 'UserController@profile_update')->name('user.profile.update');
 });
 
+// Route::get('/test', function(){
+//   $id=rand(1,100);
+//   $posts = App\Models\Post::all();
+//   foreach($posts as $post) {
+//     $post->image = "https://placeimg.com/640/480/any/".$id;
+//     $post->save();
+//     $id++;
+//   }
+//   return $posts;
+// });
+
