@@ -57,7 +57,7 @@
                                             <label>User Password <small>Enter password if you want to change.</small></label>
                                              <input type="password" name=password class="form-control" placeholder="Enter password">
                                         </div>
-
+{{-- 
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-8">
@@ -76,12 +76,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label>User Description</label>
                                             <textarea class="form-control" rows="4" name="description">{{$user->description}}</textarea>
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                     <div class="card-footer">

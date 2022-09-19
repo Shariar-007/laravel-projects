@@ -55,13 +55,13 @@ class UserController extends Controller
             'description' => $request->description,
         ]);
 
-        if($request->hasFile('image')){
-            $image = $request->image;
-            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
-            $image->move('storage/user/', $image_new_name);
-            $user->image = '/storage/user/' . $image_new_name;
-            $user->save();
-        }
+        // if($request->hasFile('image')){
+        //     $image = $request->image;
+        //     $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+        //     $image->move('storage/user/', $image_new_name);
+        //     $user->image = '/storage/user/' . $image_new_name;
+        //     $user->save();
+        // }
 
         Session::flash('success', 'User created successfully');
         return redirect()->back();
@@ -128,4 +128,43 @@ class UserController extends Controller
             return redirect()->route('user.index');
         }
     }
+
+    public function profile()
+    {  
+        $user = auth()->user();
+        return view(('admin.user.profile'), compact('user'));
+    }
+
+    public function profile_update(Request $request)
+    {  
+        $user = auth()->user();
+
+        $this->validate($request, [
+            'name' => 'required|string|max:225',
+            'email' => "required|email|unique:users,email, $user->id",
+            'password' => 'sometimes|nullable|min:8',
+            'image' => 'sometimes|nullable|image|max:2048',
+        ]);
+         
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->slug = Str::slug($request->name, '-');
+        $user->description = $request->description;
+
+        if($request->has('password') && $request->password != null && $request->password != "") {
+            $user->password = Hash::make($request->password);
+        }
+
+        if($request->hasFile('image')){
+            $image = $request->image;
+            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('storage/user/', $image_new_name);
+            $user->image = '/storage/user/' . $image_new_name;
+            $user->save();
+        }
+        $user->save();
+        Session::flash('success', 'user updated successfully');
+        return redirect()->back();
+    }
+
 }
