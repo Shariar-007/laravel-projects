@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\Tag;
 
 class FrontendController extends Controller
 {
@@ -20,6 +22,7 @@ class FrontendController extends Controller
         $lastFooterPosts =   $footerPosts->splice(0,1);
 
         $recentPosts = Post::with('category', 'user')->orderBy('created_at', 'DESC')->paginate(9);
+        // return $middlePost;
         return view('website.home', compact('posts', 'recentPosts', 'first2Posts', 'middlePost', 'lastposts','firstFooter2Posts','middleFooterPost','lastFooterPosts'));
     }
     
@@ -37,8 +40,12 @@ class FrontendController extends Controller
 
     public function post($slug){
         $post = Post::with('category','user')->where('slug',$slug)->first();
+        $popularPosts = Post::with('category','user')->inRandomOrder()->limit(3)->get();
+        $categories = Category::all();
+        $tags = Tag::all();
+
         if($post) {
-            return view('website.post', compact('post'));
+            return view('website.post', compact('post', 'popularPosts', 'categories', 'tags'));
         } else {
             return redirect('/');
         }

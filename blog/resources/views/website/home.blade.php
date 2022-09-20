@@ -26,7 +26,9 @@
 
                 <div class="text">
                   <div class="post-categories mb-3">
-                    <span class="post-category bg-primary">{{$post->category->name}}</span>
+                    @if($post->category)
+                     <span class="post-category bg-primary">{{$post->category->name}}</span>
+                    @endif
                   </div>
                   <h2>{{$post->title}}</h2>
                   <span class="date">{{$post->created_at->format("M d, Y")}}</span>
@@ -66,7 +68,10 @@
             <div class="entry2">
               <a href="{{route('website.post', ['slug' => $recentPost->slug])}}"><img src="{{$recentPost->image}}" alt="Image" class="img-fluid rounded" style="width:200px;height:150px;"></a>
               <div class="excerpt">
-              <span class="post-category text-white bg-secondary mb-3">{{$recentPost->category->name}}</span>
+                @if($recentPost->category)
+                 <span class="post-category text-white bg-secondary mb-3">{{$recentPost->category->name}}</span>
+                @endif
+              
 
               <h2><a href="{{route('website.post', ['slug' => $recentPost->slug])}}">{{$recentPost->title}}</a></h2>
               <div class="post-meta align-items-center text-left clearfix">
@@ -109,7 +114,10 @@
           <div class="col-md-5 order-md-2">
             @foreach($middleFooterPost as $post)
               <a href="{{route('website.post', ['slug' => $post->slug])}}" class="hentry img-1 h-100 gradient" style="background-image: url('{{$post->image}}');">
-                <span class="post-category text-white bg-danger">{{$post->category->name}}</span>
+                  @if($post->category)
+                    <span class="post-category text-white bg-danger">{{$post->category->name}}</span>
+                  @endif
+                
                 <div class="text">
                   <h2>{{$post->title}}</h2>
                   <span>{{$post->created_at->format("M d, Y")}}</span>
@@ -121,7 +129,11 @@
           <div class="col-md-7">
             @foreach($lastFooterPosts as $post)
               <a href="{{route('website.post', ['slug' => $post->slug])}}" class="hentry img-2 v-height mb30 gradient" style="background-image: url('{{$post->image}}');">
-                <span class="post-category text-white bg-success">{{$post->category->name}}</span>
+                
+                @if($post->category)
+                  <span class="post-category text-white bg-success">{{$post->category->name}}</span>
+                @endif
+                
                 <div class="text text-sm">
                   <h2>{{$post->title}}</h2>
                   <span>{{$post->created_at->format("M d, Y")}}</span>
@@ -132,7 +144,11 @@
             <div class="two-col d-block d-md-flex">
               @foreach($firstFooter2Posts as $post)
               <a href="{{route('website.post', ['slug' => $post->slug])}}" class="hentry v-height img-2 gradient" style="background-image: url('{{$post->image}}');">
-                <span class="post-category text-white bg-primary">{{$post->category->name}}</span>
+                
+                @if($post->category)
+                 <span class="post-category text-white bg-primary">{{$post->category->name}}</span>
+                @endif
+                
                 <div class="text text-sm">
                   <h2>{{$post->title}}</h2>
                   <span>{{$post->created_at->format("M d, Y")}}</span>
