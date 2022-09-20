@@ -43,17 +43,17 @@
             </form>
           </div>
 
-          <div class="col-4 site-logo">
-            <a href="{{route('website')}}" class="text-black h2 mb-0">Mini Blog</a>
+          <div class="col-2 site-logo">
+            <a href="{{route('website')}}" class="text-black h2 mb-0">Blog</a>
           </div>
 
-          <div class="col-8 text-right">
+          <div class="col-10 text-right">
             <nav class="site-navigation" role="navigation">
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
-                {{-- @foreach($categories as $category)
-                 <li><a href="#">{{$category->name}}</a></li>
-                @endforeach --}}
-                <li><a href="{{route('login')}}">Login</a></li>
+                @foreach($categories as $category)
+                 <li class="mr-0"><a href="{{route('website.category', ['slug' => $category->slug])}}">{{$category->name}}</a></li>
+                @endforeach
+                {{-- <li><a href="{{route('login')}}">Login</a></li> --}}
                 {{-- <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li> --}}
               </ul>
             </nav>
