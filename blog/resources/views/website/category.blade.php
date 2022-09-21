@@ -52,10 +52,10 @@
         </div>
         <div class="row text-center pt-5 border-top">
           <div class="col-md-12">
-            <div class="custom-pagination">
+            {{-- <div class="custom-pagination"> --}}
               {{-- {{ $posts->links() }} --}}
               {{ $posts->links() }}
-            </div>
+            {{-- </div> --}}
           </div>
       </div>
     </div>
