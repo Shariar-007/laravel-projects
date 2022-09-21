@@ -9,7 +9,7 @@
               <span class="post-category text-white bg-success mb-3">{{$post->name}}</span>
               <h1 class="mb-4"><a href="#">{{$post->category->name}}</a></h1>
               <div class="post-meta align-items-center text-center">
-                <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="{{asset($post->user->image)}}" alt="Image" class="img-fluid"></figure>
+                <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="@if($post->user->image) {{$post->user->image}}  @else {{asset('website')}}/images/person_1.jpg @endif" alt="Image" class="img-fluid"></figure>
                 <span class="d-inline-block mt-1">By {{$post->user->name}}</span>
                 <span>&nbsp;-&nbsp; {{$post->created_at->format("M d, Y")}}</span>
               </div>
@@ -27,7 +27,7 @@
           <div class="col-md-12 col-lg-8 main-content">
 
             <div class="post-content-body">
-              <p>{!!$post->description!!}</p>
+              <p>{{$post->description }}</p>
             </div>
 
 
@@ -48,7 +48,7 @@
               <ul class="comment-list">
                 <li class="comment">
                   <div class="vcard">
-                    <img src="{{asset($post->user->image)}}" alt="Image placeholder">
+                    <img src="@if($post->user->image) {{$post->user->image}}  @else {{asset('website')}}/images/person_1.jpg @endif" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3>Jean Doe</h3>
@@ -60,7 +60,7 @@
 
                 <li class="comment">
                   <div class="vcard">
-                    <img src="{{asset('website')}}/images/person_1.jpg" alt="Image placeholder">
+                    <img src="@if($post->user->image) {{$post->user->image}}  @else {{asset('website')}}/images/person_1.jpg @endif" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3>Jean Doe</h3>
@@ -72,7 +72,7 @@
                   <ul class="children">
                     <li class="comment">
                       <div class="vcard">
-                        <img src="{{asset('website')}}/images/person_1.jpg" alt="Image placeholder">
+                        <img src="@if($post->user->image) {{$post->user->image}}  @else {{asset('website')}}/images/person_1.jpg @endif" alt="Image placeholder">
                       </div>
                       <div class="comment-body">
                         <h3>Jean Doe</h3>
@@ -85,7 +85,7 @@
                       <ul class="children">
                         <li class="comment">
                           <div class="vcard">
-                            <img src="{{asset('website')}}/images/person_1.jpg" alt="Image placeholder">
+                            <img src="@if($post->user->image) {{$post->user->image}}  @else {{asset('website')}}/images/person_1.jpg @endif" alt="Image placeholder">
                           </div>
                           <div class="comment-body">
                             <h3>Jean Doe</h3>
@@ -97,7 +97,7 @@
                             <ul class="children">
                               <li class="comment">
                                 <div class="vcard">
-                                  <img src="{{asset('website')}}/images/person_1.jpg" alt="Image placeholder">
+                                  <img src="@if($post->user->image) {{$post->user->image}}  @else {{asset('website')}}/images/person_1.jpg @endif" alt="Image placeholder">
                                 </div>
                                 <div class="comment-body">
                                   <h3>Jean Doe</h3>
@@ -115,7 +115,7 @@
 
                 <li class="comment">
                   <div class="vcard">
-                    <img src="{{asset('website')}}/images/person_1.jpg" alt="Image placeholder">
+                    <img src="@if($post->user->image) {{$post->user->image}}  @else {{asset('website')}}/images/person_1.jpg @endif" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3>Jean Doe</h3>
